@@ -1,0 +1,8 @@
+[
+    {
+        "email": "YOUR.EMAIL@HERE",
+        "zipcodeID": "ZIPCODEID",
+        "streetID": "https://data.vlaanderen.be/id/straatnaam-STREETID",
+        "houseNumber": "HOUSENUMBER"
+    }
+]
