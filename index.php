@@ -52,15 +52,31 @@ foreach($subscribers as $subscriber){
     curl_close($ch);
     $json = json_decode($response);
 
-    if (count($json->items) > 0){
+    $collections = [];  
+    foreach($json->items as $event){
+        if ($event->type == 'collection'){
+            $collections[] = $event->fraction->name->nl;
+        }
+    }
+
+    if (count($collections) > 0){
+        $subject = 'Vuilnis ophaling ' . implode(' - ', $collections);
         $message = "Opgelet: er is morgen vuilnisophaling. Vergeet niet om alles buiten te zetten.\n\n";
-        $subject = 'Vuilnis ophaling ';
-        foreach($json->items as $collection){
-            $message.='    - ' . $collection->fraction->name->nl . "\n";
-            $subject.=' - ' . $collection->fraction->name->nl;
+        foreach ($collection in $collections){
+            $message.= '- '. $collection . "\n";
         }
 
-        mail($email, $subject, $message, "FROM: mail@kilianhendrickx.be");
+        if (!isset($_GET['test'])){
+            mail($email, $subject, $message, "FROM: mail@kilianhendrickx.be");
+        } else {
+            echo "<b>$subject</b>";
+            echo nl2br($message);
+        }
+        
     }
+
+    
+
+    
 }
 
