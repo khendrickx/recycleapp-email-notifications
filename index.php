@@ -59,7 +59,11 @@ foreach($subscribers as $subscriber){
     $collections = [];  
     foreach($json->items as $event){
         if ($event->type == 'collection'){
-            $collections[] = $event->fraction->name->nl;
+            if (property_exists($event, 'exception') & property_exists($event->exception, 'replacedBy')){
+                continue;
+            } else {
+                $collections[] = $event->fraction->name->nl;
+            }
         }
     }
 
