@@ -73,7 +73,7 @@ foreach($subscribers as $subscriber){
         if (!isset($_GET['test'])){
             mail($email, $subject, $message, "FROM: mail@kilianhendrickx.be");
         } else {
-            print_r($json);
+            // print_r($json);
             print_r($collections);
 
             echo "<hr>";
@@ -82,9 +82,5 @@ foreach($subscribers as $subscriber){
         }
         
     }
-
-    
-
-    
 }
 
