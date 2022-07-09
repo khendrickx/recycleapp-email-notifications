@@ -27,8 +27,12 @@ $access_token = json_decode($response)->accessToken;
 
 
 // Get collections
-$tomorrow = date('Y-m-d', strtotime('tomorrow'));
-// $tomorrow = date('Y-m-d');
+if (isset($_GET['test'])){
+    $tomorrow = date('Y-m-d', strtotime($_GET['test']));
+} else {
+    $tomorrow = date('Y-m-d', strtotime('tomorrow'));
+}
+
 
 foreach($subscribers as $subscriber){
     $zipcodeID = $subscriber['zipcodeID'];
