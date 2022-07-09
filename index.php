@@ -62,7 +62,7 @@ foreach($subscribers as $subscriber){
     if (count($collections) > 0){
         $subject = 'Vuilnis ophaling ' . implode(' - ', $collections);
         $message = "Opgelet: er is morgen vuilnisophaling. Vergeet niet om alles buiten te zetten.\n\n";
-        foreach ($collection in $collections){
+        foreach ($collections as $collection){
             $message.= '- '. $collection . "\n";
         }
 
