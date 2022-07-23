@@ -75,6 +75,7 @@ foreach($subscribers as $subscriber){
         }
 
         if (!isset($_GET['test'])){
+            $email = $subscriber['email'];
             mail($email, $subject, $message, "FROM: mail@kilianhendrickx.be");
         } else {
             // print_r($json);
