@@ -29,6 +29,7 @@ $access_token = json_decode($response)->accessToken;
 // Get collections
 if (isset($_GET['test'])){
     $tomorrow = date('Y-m-d', strtotime($_GET['test']));
+    echo "Test mode, using $tomorrow";
 } else {
     $tomorrow = date('Y-m-d', strtotime('tomorrow'));
 }
@@ -74,16 +75,18 @@ foreach($subscribers as $subscriber){
             $message.= '- '. $collection . "\n";
         }
 
-        if (!isset($_GET['test'])){
+        if (!isset($_GET['test']) || isset($_GET['email'])){
             $email = $subscriber['email'];
             mail($email, $subject, $message, "FROM: mail@kilianhendrickx.be");
-        } else {
-            // print_r($json);
+            echo "Send to ".$subscriber['zipcodeID']; 
+        }
+        if (isset($_GET['test'])) {
             print_r($collections);
 
-            echo "<hr>";
+            echo "<br>";
             echo "<b>$subject</b>";
             echo nl2br($message);
+            echo "<hr>";
         }
         
     }
