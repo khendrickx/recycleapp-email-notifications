@@ -5,7 +5,7 @@ $baseUrl = 'https://recycleapp.be/api/app/v1';
 $secret = 'Crgja3EGWe8jdapyr4EEoMBgZACYYjRRcRpaMQrLDW9HJBvmgkfGQyYqLgeXPavAGvnJqkV87PBB2b8zx43q46sUgzqio4yRZbABhtKeagkVKypTEDjKfPgGycjLyJTtLHYpzwJgp4YmmCuJZN9ZmJY8CGEoFs8MKfdJpU9RjkEVfngmmk2LYD4QzFegLNKUbcCeAdEW';
 $consumer = 'recycleapp.be';
 
-$subscribers = json_decode(file_get_contents("locations.json"), true);
+$subscribers = json_decode(file_get_contents(__DIR__ . "/locations.json"), true);
 
 // Get auth token
 $ch = curl_init("$baseUrl/access-token");
